@@ -12,6 +12,7 @@
 </template>
 
 <script>
+// https://developer.github.com/v3/repos/
 export default {
   name: 'GithubRepos',
   props: {
@@ -27,6 +28,7 @@ export default {
       getData: null,
       loading: true,
       errored: false,
+      fetchUrl: String,
       url: `https://api.github.com`
     }
   },
@@ -37,74 +39,46 @@ export default {
       role,
       org,
       url,
+      fetchUrl,
       loading,
     } = this;
 
-    // https://developer.github.com/v3/repos/
     switch (true) {
       // List user repositories
       case role == 'list-user-repos':
-        fetch(`${url}/users/${user}/repos`)
-          .then(response => response.json())
-          .then(result => this.getData = result)
-          .then(() => this.lazyGetData(this.getData))
-          .catch(error => console.log(error.response))
-          .finally(() => this.loading = false)
+        this.fetchUrl = `${url}/users/${user}/repos`
         break;
 
       // List organization repositories
       case role == 'list-orgs-repos':
-        fetch(`${url}/orgs/${org}/repos`)
-          .then(response => response.json())
-          .then(result => this.getData = result)
-          .then(() => this.lazyGetData(this.getData))
-          .catch(error => console.log(error.response))
-          .finally(() => this.loading = false)
+        this.fetchUrl = `${url}/orgs/${org}/repos`
         break;
 
       // List all topics for a repository
       case role == 'list-topics-repos':
-        fetch(`${url}/repos/${user}/${repo}/topics`)
-          .then(response => response.json())
-          .then(result => this.getData = result)
-          .then(() => this.lazyGetData(this.getData))
-          .catch(error => console.log(error.response))
-          .finally(() => this.loading = false)
+        this.fetchUrl = `${url}/repos/${user}/${repo}/topics`
         break;
 
       // List contributors
       case role == 'list-contributors-repos':
-        fetch(`${url}/repos/${user}/${repo}/stats/contributors`)
-          .then(response => response.json())
-          .then(result => this.getData = result)
-          .then(() => this.lazyGetData(this.getData))
-          .catch(error => console.log(error.response))
-          .finally(() => this.loading = false)
-        break;
-
-      // List languages
-      case role == 'list-languages-repos':
-        fetch(`${url}/repos/${user}/${repo}/languages`)
-          .then(response => response.json())
-          .then(result => this.getData = result)
-          .then(() => this.lazyGetData(this.getData))
-          .catch(error => console.log(error.response))
-          .finally(() => this.loading = false)
+        this.fetchUrl = `${url}/repos/${user}/${repo}/stats/contributors`
         break;
 
       // List tags
       case role == 'list-tags-repos':
-        fetch(`${url}/repos/${user}/${repo}/tags`)
-          .then(response => response.json())
-          .then(result => this.getData = result)
-          .then(() => this.lazyGetData(this.getData))
-          .catch(error => console.log(error.response))
-          .finally(() => this.loading = false)
+        this.fetchUrl = `${url}/repos/${user}/${repo}/tags`
         break;
 
       default:
-        break;
+      break;
     }
+
+    fetch(this.fetchUrl)
+      .then(response => response.json())
+      .then(result => this.getData = result)
+      .then(() => this.lazyGetData(this.getData))
+      .catch(error => console.log(error.response))
+      .finally(() => this.loading = false)
   }
 }
 </script>
