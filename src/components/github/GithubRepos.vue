@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { builder } from './builder'
+import { builder } from '../builder'
 
 // https://developer.github.com/v3/repos/
 export default {
