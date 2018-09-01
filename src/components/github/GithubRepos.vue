@@ -12,26 +12,12 @@
 </template>
 
 <script>
+import { builder } from './builder'
+
 // https://developer.github.com/v3/repos/
 export default {
   name: 'GithubRepos',
-  props: {
-    lazyGetData: Function,
-    name: String,
-    user: String,
-    repo: String,
-    role: String,
-    org: String
-  },
-  data() {
-    return {
-      getData: null,
-      loading: true,
-      errored: false,
-      fetchUrl: String,
-      url: `https://api.github.com`
-    }
-  },
+  mixins: [builder],
   mounted() {
     const {
       user,
@@ -72,13 +58,7 @@ export default {
       default:
       break;
     }
-
-    fetch(this.fetchUrl)
-      .then(response => response.json())
-      .then(result => this.getData = result)
-      .then(() => this.lazyGetData(this.getData))
-      .catch(error => console.log(error.response))
-      .finally(() => this.loading = false)
+    this.fetchingData()
   }
 }
 </script>
