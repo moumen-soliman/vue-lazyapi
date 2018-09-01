@@ -24,6 +24,7 @@ export default {
       repo,
       role,
       org,
+      owner,
       url,
       fetchUrl,
       loading,
@@ -53,6 +54,11 @@ export default {
       // List tags
       case role == 'list-tags-repos':
         this.fetchUrl = `/repos/${user}/${repo}/tags`
+        break;
+
+      // Check if you are starring a repository
+      case role == 'check-starred-repo':
+        this.fetchUrl = `/user/starred/${owner}/${repo}`
         break;
 
       default:
