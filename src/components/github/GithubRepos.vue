@@ -32,27 +32,27 @@ export default {
     switch (true) {
       // List user repositories
       case role == 'list-user-repos':
-        this.fetchUrl = `${url}/users/${user}/repos`
+        this.fetchUrl = `/users/${user}/repos`
         break;
 
       // List organization repositories
       case role == 'list-orgs-repos':
-        this.fetchUrl = `${url}/orgs/${org}/repos`
+        this.fetchUrl = `/orgs/${org}/repos`
         break;
 
       // List all topics for a repository
       case role == 'list-topics-repos':
-        this.fetchUrl = `${url}/repos/${user}/${repo}/topics`
+        this.fetchUrl = `/repos/${user}/${repo}/topics`
         break;
 
       // List contributors
       case role == 'list-contributors-repos':
-        this.fetchUrl = `${url}/repos/${user}/${repo}/stats/contributors`
+        this.fetchUrl = `/repos/${user}/${repo}/stats/contributors`
         break;
 
       // List tags
       case role == 'list-tags-repos':
-        this.fetchUrl = `${url}/repos/${user}/${repo}/tags`
+        this.fetchUrl = `/repos/${user}/${repo}/tags`
         break;
 
       default:
