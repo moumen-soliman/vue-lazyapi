@@ -5,6 +5,7 @@ export const builder = {
     user: String,
     repo: String,
     role: String,
+    owner: String,
     org: String
   },
   data() {
@@ -18,7 +19,7 @@ export const builder = {
   },
   methods: {
     fetchingData() {
-      fetch(this.fetchUrl)
+      fetch(this.url + this.fetchUrl)
         .then(response => response.json())
         .then(result => this.getData = result)
         .then(() => this.lazyGetData(this.getData))
