@@ -6,7 +6,8 @@ export const builder = {
     repo: String,
     role: String,
     owner: String,
-    org: String
+    org: String,
+    threads_id: Number
   },
   data() {
     return {
