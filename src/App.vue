@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <github-repos
+    <github
       :lazyGetData="lazyGetData"
       v-bind="lazyPropsDetails"
     />
@@ -14,9 +14,8 @@ export default {
     return {
       lazyData: null,
       lazyPropsDetails: {
-        user: 'moumen-soliman',
-        repo:'frontend-helper',
-        role:'list-contributors-repos',
+        org: 'airbnb',
+        role:'list-public-orgs-events',
       },
     }
   },
