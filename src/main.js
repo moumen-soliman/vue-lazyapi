@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import {GithubRepos, GithubEvents, GithubNotifications} from './index.js'
+import {Github} from './index.js'
 
 new Vue({
   el: '#app',
