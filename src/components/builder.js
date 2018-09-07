@@ -7,7 +7,10 @@ export const builder = {
     role: String,
     owner: String,
     org: String,
-    threads_id: Number
+    threads_id: Number,
+    apiUrl: String,
+    fetchUrls: String,
+    setRole: String
   },
   data() {
     return {
