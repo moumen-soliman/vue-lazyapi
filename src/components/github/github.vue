@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import { builder } from '../builder'
+import { githubBuilder } from '../builders/githubBuilder'
 
 export default {
   name: 'Github',
-  mixins: [builder],
+  mixins: [githubBuilder],
   mounted() {
     const {
       user,

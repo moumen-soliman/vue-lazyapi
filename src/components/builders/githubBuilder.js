@@ -1,4 +1,4 @@
-export const builder = {
+export const githubBuilder = {
   props: {
     lazyGetData: Function,
     name: String,
